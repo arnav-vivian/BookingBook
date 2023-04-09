@@ -55,15 +55,15 @@ export const getHotel = async (req, res, next) => {
 export const getAllHotel = async (req, res, next) => {
     const { min, max, ...others } = req.query;
     try {
-      const allHotel = await Hotel.find({
-        ...others,
-        cheapestPrice: { $gt: min | 1, $lt: max || 999 },
-      }).limit(req.query.limit);
-      res.status(200).json(allHotel);
+        const allHotel = await Hotel.find({
+            ...others,
+            cheapestPrice: { $gt: min | 1, $lt: max || 999 },
+        }).limit(req.query.limit);
+        res.status(200).json(allHotel);
     } catch (err) {
-      next(err);
+        next(err);
     }
-  };
+};
 
 
 
@@ -101,25 +101,25 @@ export const countByType = async (req, res, next) => {
     catch (err) {
         next(err)
     };
-   
+
 
 };
 
 export const getHotelRooms = async (req, res, next) => {
     try {
-      const hotel = await Hotel.findById(req.params.id);
-      const list = await Promise.all(
-        hotel.rooms.map(room => {
-          return Room.findById(room);
-        })
-      );
-      
-      res.status(200).json(list)
-      //console.log(list);
+        const hotel = await Hotel.findById(req.params.id);
+        const list = await Promise.all(
+            hotel.rooms.map(room => {
+                return Room.findById(room);
+            })
+        );
+
+        res.status(200).json(list)
+        //console.log(list);
     } catch (err) {
-      next(err);
+        next(err);
     }
-  };
+};
 
 
 
