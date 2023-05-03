@@ -20,8 +20,8 @@ const Navbar = () => {
         </Link>
         {user ? user.username : (
           <div className="navItems">
-            <button className="navButton" onClick={handleClick}>Register</button>
-            <button className="navButton" onClick={handleClick}>Login</button>
+            <button className="px-2" onClick={handleClick}>Register</button>
+            <button className="px-2" onClick={handleClick}>Login</button>
           </div>
         )}
       </div>
